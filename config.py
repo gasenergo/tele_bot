@@ -1,0 +1,1 @@
+API_TOKEN = '7287650375:AAHDvP00qJ3uJNIjTnvKu6AMO5-jJqjv5Vc'  # Убедитесь, что токен в кавычках

@@ -1,8 +1,7 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types, F
 import logging
-
-API_TOKEN = '7287650375:AAHDvP00qJ3uJNIjTnvKu6AMO5-jJqjv5Vc'  # Убедитесь, что токен в кавычках
+from config import API_TOKEN 
 
 # Настройка логирования
 logging.basicConfig(
