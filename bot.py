@@ -1,7 +1,11 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types, F
 import logging
-from config import API_TOKEN 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Загружаем переменные из .env файла
+API_TOKEN = os.getenv('API_TOKEN')
 
 # Настройка логирования
 logging.basicConfig(
