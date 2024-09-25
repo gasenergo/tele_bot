@@ -3,6 +3,7 @@ from aiogram import Bot, Dispatcher, types, F
 import logging
 from dotenv import load_dotenv
 import os
+from data import data 
 
 load_dotenv()  # Загружаем переменные из .env файла
 API_TOKEN = os.getenv('API_TOKEN')
@@ -27,7 +28,16 @@ async def send_welcome(message: types.Message):
 @dp.message(F.text)
 async def handle_text_message(message: types.Message):
     logging.info(f"Received text message from {message.from_user.id}")
-    await message.answer(message.text)
+    text = message.text.title()
+    results = list(filter(lambda entry: entry['Наименование'].startswith(text), data))
+    # Форматируем ответ
+    if len(results) > 1:
+        response = "Есть несколько таких станций:\n" + "\n".join([f"Станция {entry['Наименование']}" for entry in results])+"\n".join([f"\nэто {results[0]['Дорога']} дорога"])
+    elif len(results) == 1:
+        response = "\n".join([f"Станция {entry['Наименование']}? Знаю, {entry['Дорога']} дорога" for entry in results])
+    else:
+        response = "Записи не найдены."
+    await message.answer(response) 
 
 # Основная асинхронная функция для запуска бота
 async def main():
