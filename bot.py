@@ -18,6 +18,7 @@ logging.basicConfig(
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
+
 # Обработчик команды /start
 @dp.message(F.CommandStart())
 async def send_welcome(message: types.Message):
