@@ -37,7 +37,7 @@ async def handle_text_message(message: types.Message):
     elif len(results) == 1:
         response = "\n".join([f"Станция {entry['Наименование']}? Знаю, {entry['Дорога']} дорога" for entry in results])
     else:
-        response = "Записи не найдены."
+        response = "Никогда о такой не слышал, может где-то и есть."
     await message.answer(response) 
 
 # Основная асинхронная функция для запуска бота
